@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tss.formdesigner.dao.TsFormMapper" >
+
+  <resultMap id="BaseResultMap" type="com.tss.formdesigner.model.TsForm" >
+    <id column="FORMID" property="FORMID" jdbcType="VARCHAR" />
+    <result column="NAME" property="NAME" jdbcType="VARCHAR" />
+    <result column="DESC" property="DESC" jdbcType="VARCHAR" />
+    <result column="CREATETIME" property="CREATETIME" jdbcType="DATE" />
+    <result column="CREATOR" property="CREATOR" jdbcType="VARCHAR" />
+    <result column="CREATORNAME" property="CREATORNAME" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <resultMap id="ResultMapWithBLOBs" type="com.tss.formdesigner.model.TsForm" extends="BaseResultMap" >
+    <result column="DATA" property="DATA" jdbcType="CLOB" />
+  </resultMap>
+  
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  
+  <sql id="Base_Column_List" >
+    FORMID, NAME, DESC, CREATETIME, CREATOR, CREATORNAME
+  </sql>
+  
+  <sql id="Blob_Column_List" >
+    DATA
+  </sql>
+  
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from TS_FORM
+    where FORMID = #{FORMID,jdbcType=VARCHAR}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TS_FORM
+    where FORMID = #{FORMID,jdbcType=VARCHAR}
+  </delete>
+  
+  <insert id="insert" parameterType="com.tss.formdesigner.model.TsForm" >
+    insert into TS_FORM (FORMID, NAME, DESC, 
+      CREATETIME, CREATOR, CREATORNAME, 
+      DATA)
+    values (#{FORMID,jdbcType=VARCHAR}, #{NAME,jdbcType=VARCHAR}, #{DESC,jdbcType=VARCHAR}, 
+      #{CREATETIME,jdbcType=DATE}, #{CREATOR,jdbcType=VARCHAR}, #{CREATORNAME,jdbcType=VARCHAR}, 
+      #{DATA,jdbcType=CLOB})
+  </insert>
+  
+  <insert id="insertSelective" parameterType="com.tss.formdesigner.model.TsForm" >
+    insert into TS_FORM
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="FORMID != null" >
+        FORMID,
+      </if>
+      <if test="NAME != null" >
+        NAME,
+      </if>
+      <if test="DESC != null" >
+        DESC,
+      </if>
+      <if test="CREATETIME != null" >
+        CREATETIME,
+      </if>
+      <if test="CREATOR != null" >
+        CREATOR,
+      </if>
+      <if test="CREATORNAME != null" >
+        CREATORNAME,
+      </if>
+      <if test="DATA != null" >
+        DATA,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="FORMID != null" >
+        #{FORMID,jdbcType=VARCHAR},
+      </if>
+      <if test="NAME != null" >
+        #{NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="DESC != null" >
+        #{DESC,jdbcType=VARCHAR},
+      </if>
+      <if test="CREATETIME != null" >
+        #{CREATETIME,jdbcType=DATE},
+      </if>
+      <if test="CREATOR != null" >
+        #{CREATOR,jdbcType=VARCHAR},
+      </if>
+      <if test="CREATORNAME != null" >
+        #{CREATORNAME,jdbcType=VARCHAR},
+      </if>
+      <if test="DATA != null" >
+        #{DATA,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.tss.formdesigner.model.TsForm" >
+    update TS_FORM
+    <set >
+      <if test="NAME != null" >
+        NAME = #{NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="DESC != null" >
+        DESC = #{DESC,jdbcType=VARCHAR},
+      </if>
+      <if test="CREATETIME != null" >
+        CREATETIME = #{CREATETIME,jdbcType=DATE},
+      </if>
+      <if test="CREATOR != null" >
+        CREATOR = #{CREATOR,jdbcType=VARCHAR},
+      </if>
+      <if test="CREATORNAME != null" >
+        CREATORNAME = #{CREATORNAME,jdbcType=VARCHAR},
+      </if>
+      <if test="DATA != null" >
+        DATA = #{DATA,jdbcType=CLOB},
+      </if>
+    </set>
+    where FORMID = #{FORMID,jdbcType=VARCHAR}
+  </update>
+  
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.tss.formdesigner.model.TsForm" >
+    update TS_FORM
+    set NAME = #{NAME,jdbcType=VARCHAR},
+      DESC = #{DESC,jdbcType=VARCHAR},
+      CREATETIME = #{CREATETIME,jdbcType=DATE},
+      CREATOR = #{CREATOR,jdbcType=VARCHAR},
+      CREATORNAME = #{CREATORNAME,jdbcType=VARCHAR},
+      DATA = #{DATA,jdbcType=CLOB}
+    where FORMID = #{FORMID,jdbcType=VARCHAR}
+  </update>
+  
+  <update id="updateByPrimaryKey" parameterType="com.tss.formdesigner.model.TsForm" >
+    update TS_FORM
+    set NAME = #{NAME,jdbcType=VARCHAR},
+      DESC = #{DESC,jdbcType=VARCHAR},
+      CREATETIME = #{CREATETIME,jdbcType=DATE},
+      CREATOR = #{CREATOR,jdbcType=VARCHAR},
+      CREATORNAME = #{CREATORNAME,jdbcType=VARCHAR}
+    where FORMID = #{FORMID,jdbcType=VARCHAR}
+  </update>
+  
+</mapper>

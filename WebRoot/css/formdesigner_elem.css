@@ -1,0 +1,32 @@
+.elem-grid {
+	border: 1px solid #cad9ea;
+	color: #666;
+	width:100%;
+	height:100%;
+	table-layout: fixed;
+	empty-cells: show;
+	border-collapse: collapse;
+	margin: 0 auto;
+}
+
+.elem-grid tr {
+	border: 1px solid #cad9ea;
+}
+
+.elem-grid th {
+	border: 1px solid #cad9ea;
+	background-color: #f5fafe;
+	height: 30px;
+}
+
+.elem-grid td {
+	border: 1px solid #cad9ea;
+	height: 30px;
+}
+
+.elem-grid th {
+	background-repeat: repeat-x;
+	height: 30px;
+}
+
+

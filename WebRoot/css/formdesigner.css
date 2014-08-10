@@ -1,0 +1,250 @@
+/*
+This file contains css that used only in design time of formdesigner
+*/
+
+#fmdmaindiv {
+	width: 100%;
+	height: 100%;
+}
+
+.fmcontainer_block {
+	background-color:white;
+	width:100%;
+	margin-top:0.7em;
+}
+
+.fmcontainer_block_titlebar {
+	background-color:#2FABE9;
+	width:100%;
+	height:2em;
+	padding-top:1em;
+}
+
+.fmcontainer_block_titlebar img {
+	width:1.2em;
+	height:1.2em;
+	margin-left:1em;
+	background-color:white;
+	border:solid 0.1em white;
+	border-radius: 0.1em;
+}
+
+.fmcontainer_block_titlebar a {
+	color:#2FABE9;
+	border:none;
+	padding:0.4em;
+	margin-left:1em;
+	margin-bottom:0.8em;
+	border-radius:0.1em;
+	text-decoration:none;
+	background-color:white;
+}
+
+.fmcontainer_block_content {
+	font-size:0.75em;
+	margin:0px;
+	background-color:white;
+	width:100%;
+	border:none;
+}
+
+.fmcontainer_block_content .fmdtr {
+	background-color:white;
+	width:100%;
+	margin:0px;
+	border:none;
+}
+
+.fmcontainer_block_content .fmdtd{
+	margin:0px;
+	background-color:white;
+	border:dashed 1px black;
+	height:30px;
+}
+
+.fmcontainer_block_content .fmdtd .fmdtipp {
+	color:#aaaaaa;
+	font-style:italic;
+}
+
+/*override*/
+.ui-widget {
+	font-size : 0.8em;
+}
+.ui-accordion .ui-accordion-content {
+	padding: 0.1em 0.1em 0.1em 0.1em;
+}
+
+/*designer*/
+
+.fmdelementlistwrapper {
+	height:100%;
+	width:10em;
+	padding:0.2em;
+	float:left;
+	margin-left:0em;
+	margin-bottom:0em;
+}
+
+.fmdelementlist {
+	height:98%;
+	width:100%;
+	min-width:10em;
+	text-align:left;
+}
+
+.fmdelementlist ul {
+	list-style:none;
+	line-height:1.75em;
+	/* height:90%; */
+	display: block;
+	/* position: relative;
+	top: 0.2em; */
+	margin-left : 0.2em;
+	padding: 0.2em 0 0.2em 0;
+	background: url(../images/elem_shade.png) no-repeat;
+	/* -webkit-background-size: contain; */
+	filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";  
+	-moz-background-size:100% 100%;  
+    background-size:100% 100%;
+}
+
+.fmdelementlist ul li {
+	margin: 0 0.2em 0 0;
+}
+
+.fmdelementlist ul li img{
+	vertical-align: middle;
+	margin-right: 0.4em;
+}
+
+.fmdelementlist ul li a{
+	border:solid 1px #2FABE9;
+	padding: 0.1em 0.1em 0.1em 1em;
+	margin-bottom: 0.3em;
+	/* border-radius:0.3em; */
+	border-top-right-radius:0.6em;
+	border-bottom-right-radius:0.6em;
+	cursor:move;
+	list-style:none;
+	text-decoration:none;
+	font-size:0.8em;
+	color: #67a5cd;
+	background: #f2faff url(../images/elem_border.png) no-repeat;
+	display: block;
+	width: 12em;
+	/* -webkit-border-top-right-radius: 0.3em;
+ 	-webkit-border-bottom-right-radius: 0.3em; */
+	-webkit-transition: all 0.3s ease-out;
+	-webkit-box-shadow: 2px 2px 4px #888;
+}
+
+.fmdelementlist ul li a:hover {
+	color: #67a5cd;
+	padding: 0.1em 0.5em 0.1em 0.5em;
+	margin-left: 1em;
+	background: #fffbd4;
+	border-top-right-radius:1em;
+	border-bottom-right-radius:1em;
+}
+
+.fmddragging {
+	border-radius:0.1em;
+	border:dashed 1px orange;
+	font-size:0.75em;
+	min-width:10em;
+}
+
+.fmdcanvaswrapper {
+	height:100%;
+	overflow:scroll;
+	/* cursor:normal; */
+}
+
+.fmdcanvas {
+	background-color:#FFFFFF;
+	color:#666666;
+	font-size:1em;
+	width:60em;
+	float:left;
+	margin-left:0.5em;
+	margin-top:1em;
+}
+
+.fmdcanvas ul {
+	font-size:0.8em;
+	max-width:100%;
+	max-height:2.4em;
+}
+
+.fmdcanvastip {
+	background-color:#fff9cb;
+	float:left;
+	text-align:right;
+	border-radius:0.1em;
+	padding-left:1.2em;
+	padding-right:1.2em;
+	transition:border linear .2s,box-shadow linear .5s;
+	-moz-transition:border linear .2s,-moz-box-shadow linear .5s;
+	-webkit-transition:border linear .2s,-webkit-box-shadow linear .5s;
+	outline:none;border-color:#f8cd05;
+	box-shadow:0 0 0.4em rgba(250,255,170,1);
+	-moz-box-shadow:0 0 0.5em rgba(250,255,170,1);
+	-webkit-box-shadow:0 0 0.5em rgba(250,255,170,3);
+}
+
+.fmdselected {
+	transition:border linear .2s,box-shadow linear .5s;
+	-moz-transition:border linear .2s,-moz-box-shadow linear .5s;
+	-webkit-transition:border linear .2s,-webkit-box-shadow linear .5s;
+	outline:none;border-color:rgba(30,240,150,1);
+	box-shadow:0 0 0.4em rgba(30,240,150,1);
+	-moz-box-shadow:0 0 0.5em rgba(30,240,150,1);
+	-webkit-box-shadow:0 0 0.5em rgba(30,240,150,3);
+}
+
+/*fmcontainer place holder class in sorting*/
+.fmform .ui-state-highlight { height: 6em; line-height: 2em; }
+
+.fmsystemtab div{
+	width:100%;
+	height:100%;
+}
+
+.fmsystemtab div{
+	width:30em;
+	height:20em;
+	background-color:#2FABE9;
+	padding:2em;
+	padding-left:2em;
+}
+
+.fmsystemtab p {
+	color:#ffffff;
+	font-style:italic;
+	font-size:1em;
+}
+
+/* .fmddropped {
+	cursor:move;
+} */
+
+
+.grid_even_row {background:#F8F8F8;}
+.grid_odd_row {background:#F8F8F8;}
+
+
+/*class for ace editor*/
+.ace_editor { 
+    margin: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width:100%;
+    height:100%;
+}
+
+
+
