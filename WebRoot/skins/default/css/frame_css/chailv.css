@@ -1,0 +1,118 @@
+@charset "utf-8";
+body{font-size:62.5%; font-family:"微软雅黑",Arial, Helvetica, sans-serif; color:#666;margin:0px;padding:0px;background:url(../../images/skin/default/clbx_bg.jpg);}
+.main{width:1000px;margin:0px auto; font-size:1.2em; border:#f6f6f6 solid 1px; border-collapse:collapse;}
+ul,li{ list-style:none; margin:0px; padding:0px;}
+h1{font-size:1.2em;}
+a{ text-decoration:none;}
+.clear{ clear:both;}
+/*差旅报销申请单样式*/
+/*header*/
+.header{width:100%;height:30px;background:url(../../images/skin/default/table_head_bg.jpg); overflow:hidden;}
+
+/*nav*/
+.header a{color:#666;}
+.header a:hover{color:#FFF;}
+.nav_1{float:right;}
+.nav_1 ul li{float:left;display:block;height:20px; margin-right:20px;}
+.nav_1 ul li a{float:left;text-decoration:none;color:#fff;height:30px;line-height:30px;}
+.nav_1 ul li .span_bg1{ display:block; width:13px; height:13px; background:url(../../images/skin/default/icon.png) no-repeat; background-position:-143px -72px;}
+.nav_1 ul li .span_bg2{ display:block; width:13px; height:13px; background:green;}
+/*table test*/
+#control table,#test table{width:100%; border-collapse:collapse;}
+#control table tr{height:20px; line-height:20px;}
+#control table tr td{ border-bottom:none; border-top:none; background:#F4F7FC;}
+#control table tr td a{color:#666; font-weight:bold;}
+#control table tr td span{ float:right; margin-right:16px;}
+#test table,#test table tr th,td{border:#E8E8E8 solid 1px;}
+table tr{height:25px;line-height:25px;}
+table td{background:#fff;padding-left:10px;width:210px;}
+table th{font-weight:400;background:#F6F6F6;color:#666;width:100px; text-align:right;padding-right:5px;}
+.redtext{color:red;}
+form .button_style,.button_style{ float:right;color:#090909; text-decoration:none;width:70px;height:23px; line-height:23px/*\9*/; color:#fff;text-align:center;border-radius:3px;border:1px solid #1F75C0; background:#428BCA; margin-right:20px;}
+form .button_style:hover,.button_style:hover{border-radius:3px;border:1px solid #1066B0; background:#3276B1;}
+form input{font-family:"微软雅黑";padding-left:5px;font-size:1em;height:20px;outline:none;background:#fff;border-radius:3px;border:1px solid #EEE;color:#666;}
+form input:focus{border:1px solid #4D90FE;color:#666;}
+/*表内各分表样式*/
+/*table test1*/
+#control table,#test1 table{width:100%; border-collapse:collapse;}
+#test1 table,#test1 table tr th,td{border:#E8E8E8 solid 1px;}
+#test1 table tr td select{ border:#eeeeee 1px solid; border-radius:3px; font-family:微软雅黑; color:#666; font-size:1em;}
+/*table test2*/
+#control table,#test2 table{width:100%; border-collapse:collapse;}
+#test2 table tr th,td{border:#E8E8E8 solid 1px;}
+#test2 table thead{ border-top:none !important;}
+#test2 table thead td{background:#D6DDFA;color:#666;text-align:center;padding:0px;}
+#test2 table tr td select{ border:#eeeeee 1px solid; border-radius:3px; font-family:微软雅黑; color:#666; font-size:1em;}
+.count_table tr th{ text-align:center; background:#F4F7FC;}
+.count{ text-align:right;padding-right:20px; font-weight:bold;}
+.traffic{width:200px;}
+/*table test3*/
+#control table,#test3 table{width:100%; border-collapse:collapse;}
+#test3 table tr th{background:#F6F6F6;}
+#test3 table tr th,td{border:#E8E8E8 solid 1px;}
+#test3 table thead{ border-top:none !important;}
+#test3 table thead td{background:#D6DDFA;color:#666;text-align:center;padding:0px;}
+#test3 table tr td select{ border:#eeeeee 1px solid; border-radius:3px; font-family:微软雅黑; color:#666; font-size:1em;}
+/*table test4*/
+#control table,#test4 table{width:100%; border-collapse:collapse;}
+#test4 table tr th,td{border:#E8E8E8 solid 1px;}
+#test4 table thead{ border-top:none !important;}
+#test4 table thead td{background:#D6DDFA;color:#666;text-align:center;padding:0px;}
+#test4 table tr td select{ border:#eeeeee 1px solid; border-radius:3px; font-family:微软雅黑; color:#666; font-size:1em;}
+#test4 table tr th a{ float:right;color:#090909; text-decoration:none;width:70px;height:23px; line-height:23px/*\9*/; color:#fff;text-align:center;border-radius:3px;border:1px solid #1F75C0; background:#428BCA; margin-right:30px;}
+#test4 table tr th a:hover{border-radius:3px;border:1px solid #1066B0; background:#3276B1;}
+/*table test5*/
+#control table,#test5 table{width:100%; border-collapse:collapse;}
+#test5 table tr th,td{border:#E8E8E8 solid 1px;}
+#test5 table thead{ border-top:none !important;}
+#test5 table thead td{background:#D6DDFA;color:#666;text-align:center;padding:0px;}
+#test5 table tr td select{ border:#eeeeee 1px solid; border-radius:3px; font-family:微软雅黑; color:#666; font-size:1em;}
+.text_center{text-align:center;}
+
+/*出差申请单样式*/
+#test table tr td{ background:#fff;}
+#test1 table tr td { background:#fff;}
+#test1 table,#test1 table tr td{border:#E8E8E8 solid 1px;}
+#test1 table tr td a{color:#fff;}
+.border_none input{border:none; vertical-align:middle; height:13px;}/*去掉checkbox和radio的边框以及与文字对齐*/
+
+/*借款申请单样式*/
+.p_style td{background:#F6F6F6;}
+.p_style td p{display:block;height:5px; line-height:5px;}
+
+/*按钮样式*/
+.button {
+  -webkit-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.2);
+  background-color: #eeeeee;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fbfbfb), color-stop(100%, #e1e1e1));
+  background: -webkit-linear-gradient(top, #fbfbfb, #e1e1e1);
+  background: -moz-linear-gradient(top, #fbfbfb, #e1e1e1);
+  background: -o-linear-gradient(top, #fbfbfb, #e1e1e1);
+  background: linear-gradient(top, #fbfbfb, #e1e1e1);
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  border: 1px solid #d4d4d4;
+  height: 23px;
+  line-height: 23px;
+  padding: 0px 15px;
+  font-family:"微软雅黑"；
+  color: #666666;
+  text-shadow: 0 1px 1px white;
+  margin:3px 0px 0px 3px;
+  text-decoration: none;
+  text-align: center;
+}
+.button-rounded {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
+

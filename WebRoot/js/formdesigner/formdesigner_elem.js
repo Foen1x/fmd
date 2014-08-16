@@ -16,6 +16,9 @@
 
 function fmdf_initComponentMeta() {
 	
+	//component i18n
+	fmd_i18n_modules = {};
+	
 	//all containers wrapper
 	fmdmeta_prop = {};
 
@@ -89,7 +92,8 @@ function fmdf_initComponentMeta() {
 					["ValidTime", fmd_i18n_vld_time],
 					["RegExp", fmd_i18n_vld_regexp]
 	                      ];
-
+	
+	
 	/**
 	 * list of available controls
 	 */
@@ -194,7 +198,7 @@ function fmdf_initComponentMeta() {
 			    	"cellType" : "ch",
 			    	"value" : {"default":"0"}
 			    },
-			    "labelPosition" : {
+			    /*"labelPosition" : {
 			    	"name" : fmd_i18n_prop_labelposition,
 			    	"cellType" : {"type":"coro", 
 			    				"options":[["left",fmd_i18n_prop_left],
@@ -204,7 +208,44 @@ function fmdf_initComponentMeta() {
 			    				]
 			    	},
 			    	"value" : {"default":"top"}
+			    },*/
+			    "required" : {
+			    	"name" : fmd_i18n_prop_required,
+			    	"cellType" : "ch",
+			    	"value" : {"default":"0"}
 			    },
+			    "disabled" : {
+			    	"name" : fmd_i18n_prop_disabled,
+			    	"cellType" : "ch",
+			    	"value" : {"default":"0"}
+			    },
+			    /*"keepOnDisabled" : {
+			    	"name" : fmd_i18n_prop_keepondisabled,
+			    	"cellType" : "ch",
+			    	"value" : {"default":"0"}
+			    }*/
+			    "valueValidation" : {
+			    	"name" : fmd_i18n_prop_valuevalidation,
+				    "cellType" : {
+						"type" : "coro",
+						"options":fmdmeta_prop.runtime_validators
+				    },
+					"conditional-sub" : {
+						"RegExp" : {
+							"valueValidation-RegExp" : {
+								"name" : fmd_i18n_prop_regexp,
+								"cellType" : "ed",
+								"validator" : "NotEmpty"
+							}
+					    }
+					},
+				    "value" : {"default":""}
+			    },
+			    /*"tabIndex" : {
+			    	"name" : fmd_i18n_prop_tabindex,
+			    	"cellType" : "ed",
+			    	"validator" : "ValidInteger"
+			    },*/
 			    "i18ntip" : {
 			    	"name" : fmd_i18n_prop_i18ntip,
 			    	"cellType" : "ro",
@@ -225,33 +266,6 @@ function fmdf_initComponentMeta() {
 					    	"img" : "en.png"
 			    		}
 			    	}
-			    },
-			    "valueValidation" : {
-			    	"name" : fmd_i18n_prop_valuevalidation,
-				    "cellType" : {
-						"type" : "coro",
-						"options":fmdmeta_prop.runtime_validators
-				    },
-					"conditional-sub" : {
-						"RegExp" : {
-							"valueValidation-RegExp" : {
-								"name" : fmd_i18n_prop_regexp,
-								"cellType" : "ed",
-								"validator" : "NotEmpty"
-							}
-					    }
-					},
-				    "value" : {"default":""}
-			    },
-			    "disabled" : {
-			    	"name" : fmd_i18n_prop_disabled,
-			    	"cellType" : "ch",
-			    	"value" : {"default":"0"}
-			    },
-			    "keepOnDisabled" : {
-			    	"name" : fmd_i18n_prop_keepondisabled,
-			    	"cellType" : "ch",
-			    	"value" : {"default":"0"}
 			    }
 			},
 			"events" : {

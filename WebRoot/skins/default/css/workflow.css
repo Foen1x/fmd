@@ -1,0 +1,20 @@
+@charset "utf-8";
+/* CSS Document */
+body,div,ul,li,h1,h2,h3,h4,h5,h6,p{ padding:0px; margin:0px;}
+body{ font-size:62.5%; font-family:"微软雅黑", "宋体";}
+ul li{ list-style:none;}
+.workflow{ margin:0px auto; width:90%; overflow:hidden;padding-top:20px;}
+.search{ margin-bottom:20px; float:right;}
+.search .inputsearch{background-color: #FFFFFF;border: 1px solid #CCCCCC; min-height:30px;line-height:30px;padding-left:8px;border-radius: 5px 0px 0px 5px;}
+.search .tips{vertical-align:top;*vertical-align:baseline; border-radius: 0 5px 5px 0; background-color: #EEEEEE; border: 1px solid #CCCCCC; display: inline-block;font-size: 13px;font-weight: normal;height: 24px; line-height: 18px; min-width: 16px; padding: 4px 5px; text-align: center; margin-left: -9px; z-index:100; left:100px; top:8px;}
+.search .tips-icon{cursor:pointer;  background-position: -25px 2px; background-image:url(images/tbl.png); background-repeat: no-repeat; display: inline-block; height: 20px; line-height: 14px;  width:14px;}
+.work_bm{ margin-top:60px;}
+.bm{ padding-top:10px; border:#ccc solid 2px; position:relative; margin-top:20px;}
+.bm h1{ font-size:1.4em; display:inline-block; background:#eee; color:#666; border-radius:3px; padding:5px 14px; position:absolute; left:20px; top:-15px;}
+.approval{ padding-top:10px;padding-bottom:10px; overflow:hidden;}
+.approval li{ padding-left:18px; padding-right:18px;}
+.approval li p{ width:33.3%; float:left; line-height:30px;font-size:1.3em;text-align:center;}
+.approval li p a{ color:#666;}
+.lib p{ background:#f9f9f9;}
+.linb p{ background:#fff;}
+

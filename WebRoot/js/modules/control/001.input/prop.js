@@ -26,11 +26,16 @@ fmdmeta_prop.control.input = {
 		    	"displayOnly" : true,
 		    	"afterProperty" : "id"
 		    },
-		    "bindings" : {
+		    "databinding" : {
 		    	"name" : fmd_i18n_prop_binding,
-		    	"img" : "binding.png",
-		    	"cellType" : "ed",
+		    	"img" : "databinding.png",
+		    	"cellType" : "databinding",
 		    	"validator" : "NotEmpty"
+		    },
+		    "processbinding" : {
+		    	"name" : fmd_i18n_prop_pbinding,
+		    	"img" : "processbinding.png",
+		    	"cellType" : "processbinding"
 		    },
 		    "contentType" : {
 		    	"name" : fmd_i18n_prop_contenttype,
@@ -62,10 +67,12 @@ fmdmeta_prop.control.input = {
 				},
 		    	"value" : {"default":"text"}
 		    },
-		    "maxLength" : {
+		    "maxlength" : {
 		    	"name" : fmd_i18n_prop_maxlength,
 		    	"cellType" : "ed",
-		    	"value" : {"default":"10"}
+		    	"value" : {"default":"10"},
+		    	"validator" : "ValidInteger",
+		    	"tooltip" : fmd_i18n_modules.input.tip_maxlength
 		    }
 		},
 		"includes-events" : {
@@ -78,19 +85,20 @@ fmdmeta_prop.control.input = {
 		"onApply" : function() {
 			var obj = fmdf_getSelected();
 			var vals = fmd.version.formdata.propconf[obj.attr("id")];
+			//alert('input onApply fmd.version.formdata.propconf[$obj.attr("id")]=\n'+JSON.stringify(vals));
 			if (vals["labelPosition"]=='left') {
 				obj.html('<span style="width:100%;display:inline;"><label style="width:40%;float:left;" class="title">'+vals["i18nname-"+fmd.lang]+'</label><input style="width:60%" class="large" type="text" name="input" /></span>');
 			} else if (vals["labelPosition"]=='right') {
 				obj.html('<span style="width:100%;display:inline"><input style="width:60%" class="large" type="text" name="input" /><label style="width:40%;float:right;" class="title">'+vals["i18nname-"+fmd.lang]+'</label></span>');
-			} else if (vals["labelPosition"]=='top') {
-				obj.html('<label class="title">'+vals["i18nname-"+fmd.lang]+'</label><input class="large" type="text" name="input" />');
 			} else if (vals["labelPosition"]=='bottom') {
 				obj.html('<input class="large" type="text" name="input" /><label class="title">'+vals["i18nname-"+fmd.lang]+'</label>');
+			} else {//default is top
+				obj.html('<label class="title">'+vals["i18nname-"+fmd.lang]+'</label><input class="large" type="text" name="input" />');
 			}
 			obj.find('label')//.html(vals["i18nname-"+fmd.lang])
 				.css("display", (vals["hideLabel"]=='1')?"none":"block");
 			obj.find('input').attr("disabled", vals["disabled"]=='1');
-			// && obj.attr('maxLength', vals["maxLength"]).css("display", "inline-block");
+			// && obj.attr('maxlength', vals["maxlength"]).css("display", "inline-block");
 		},
 		"gridEvents" : {
 			"onEditCell" : function(stage,rId,cId,nv,ov) {

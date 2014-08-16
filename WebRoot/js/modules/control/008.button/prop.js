@@ -9,9 +9,15 @@ fmdmeta_prop.control.button = {
 		//icon in element list, located in images/designer/modules/
 		"icon" : "elem_button.png",
 		//html code for dragging
-		innerhtml_dragging : '<div class="btn">'+fmd_i18n_untitled+'</div>',
+		innerhtml_dragging : '<div class="btn" style="padding:0.5em 1em;">'+fmd_i18n_untitled+'</div>',
 		//html code after dropped
-		innerhtml_dropped : '<div class="btn">'+fmd_i18n_untitled+'</div>',
+		innerhtml_dropped : '<div class="btn" style="padding:0.5em 1em;">'+fmd_i18n_untitled+'</div>',
+		//if allow multi element in one cell, default false
+		"multielement" : true,
+		//when in multielement mode, how multiple element coexists, default=respective
+		//compositive - in one parent div; respective - each has a parent div
+		//"multielement-style" : "respective",
+		//properties
 		"includes-properties" : {
 			"common" : fmdmeta_prop.common.all.properties,
 			"controlcommon" : fmdmeta_prop.common.usercontrol.properties
@@ -34,7 +40,9 @@ fmdmeta_prop.control.button = {
 			
 		},
 		"onApply" : function() {
-			
+			var obj = fmdf_getSelected();
+			var vals = fmd.version.formdata.propconf[obj.attr("id")];
+			obj.find('.btn').html(vals["i18nname-"+fmd.lang]);
 		},
 		"gridEvents" : {
 			"onEditCell" : function(stage,rId,cId,nv,ov) {

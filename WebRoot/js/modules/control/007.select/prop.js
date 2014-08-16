@@ -31,16 +31,99 @@ fmdmeta_prop.control.select = {
 		    	"displayOnly" : true,
 		    	"afterProperty" : "id"
 		    },
-		    "bindings" : {
-		    	"name" : fmd_i18n_prop_binding,
-		    	"cellType" : "binding"
+		    "dataprovider" : {
+		    	"name" : fmd_i18n_prop_dataprovider,
+		    	"img" : "dataprovider.png",
+			    "cellType" : {
+					"type" : "coro",
+					"options":[["",""],
+	        					["dataprovider-dict", fmd_i18n_prop_dict],
+	        					["dataprovider-restsrv", fmd_i18n_prop_restsrv]
+	        	                ]
+			    },
+			    "validator" : "NotEmpty",
+				"conditional-sub" : {
+					"dataprovider-dict" : {
+						"dataprovider-dict" : {
+							"name" : fmd_i18n_prop_dict,
+							"cellType" : "ed",
+							"validator" : "NotEmpty"
+						}
+				    },
+				    "dataprovider-restsrv" : {
+						"dataprovider-restsrv" : {
+							"name" : fmd_i18n_prop_restsrv,
+							"cellType" : "ed",
+							"validator" : "NotEmpty",
+							"tooltip" : fmd_i18n_prop_restsrv_tip
+						},
+						"dataprovider-restsrv-usr" : {
+							"name" : fmd_i18n_prop_restsrvusr,
+							"cellType" : "ed",
+							"tooltip" : fmd_i18n_prop_restsrvusr_tip
+						},
+						"dataprovider-restsrv-pwd" : {
+							"name" : fmd_i18n_prop_restsrvpwd,
+							"cellType" : "ed"
+						}
+				    }
+				},
+			    "value" : {"default":""}
 		    },
-		    "maxLength" : {
-		    	"name" : fmd_i18n_prop_maxlength,
+		    "databinding" : {
+		    	"name" : fmd_i18n_prop_binding,
+		    	"img" : "databinding.png",
+		    	"cellType" : "ro",
+		    	"displayOnly" : true,
+		    	"sub" : {
+		    		"databinding-realvalue" : {
+		    			"name" : fmd_i18n_prop_binding +"("+ fmd_i18n_prop_realvalue +")",
+		    			"cellType" : "databinding",
+				    	"validator" : "NotEmpty",
+				    	"img" : "databinding.png"
+		    		},
+		    		"databinding-displayvalue" : {
+		    			"name" : fmd_i18n_prop_binding +"("+ fmd_i18n_prop_displayvalue +")",
+		    			"cellType" : "databinding",
+				    	"validator" : "NotEmpty",
+				    	"img" : "databinding.png"
+		    		}
+		    	}
+		    },
+		    "processbinding" : {
+		    	"name" : fmd_i18n_prop_pbinding,
+		    	"img" : "processbinding.png",
+		    	"cellType" : "ro",
+		    	"displayOnly" : true,
+		    	"sub" : {
+		    		"processbinding-realvalue" : {
+		    			"name" : fmd_i18n_prop_pbinding +"("+ fmd_i18n_prop_realvalue +")",
+		    			"cellType" : "processbinding",
+				    	//"validator" : "NotEmpty",
+				    	"img" : "processbinding.png"
+		    		},
+		    		"processbinding-displayvalue" : {
+		    			"name" : fmd_i18n_prop_pbinding +"("+ fmd_i18n_prop_displayvalue +")",
+		    			"cellType" : "processbinding",
+				    	//"validator" : "NotEmpty",
+				    	"img" : "processbinding.png"
+		    		}
+		    	}
+		    },
+		    "multiple" : {
+		    	"name" : fmd_i18n_modules.select.multiple,
+		    	"cellType" : "ch",
+		    	"value" : {"default":"0"}
+		    },
+		    "size" : {
+		    	"name" : fmd_i18n_modules.select.size,
 		    	"cellType" : "ed",
-		    	"value" : {"default":"10"}
+		    	"value" : {"default":"1"},
+		    	"validator" : "ValidInteger",
+		    	"tooltip" : fmd_i18n_modules.select.tip_size
 		    }
 		},
+		//"abandon-properties" : ["valueValidation"],
 		"includes-events" : {
 			"common" : fmdmeta_prop.common.all.events,
 			"controlcommon" : fmdmeta_prop.common.datacontrol.events
@@ -49,14 +132,21 @@ fmdmeta_prop.control.select = {
 			
 		},
 		"onApply" : function() {
-			
+			var obj = fmdf_getSelected();
+			var vals = fmd.version.formdata.propconf[obj.attr("id")];
+			obj.find('label').html(vals["i18nname-"+fmd.lang])
+				.css("display", (vals["hideLabel"]=='1')?"none":"block");
 		},
 		"gridEvents" : {
 			"onEditCell" : function(stage,rId,cId,nv,ov) {
 				return true;
 			},
 			"onCellChanged" : function(rId,cId,nv) {
-				
+				if (nv && cId==fmdmeta_prop.gridconf.idx.value) {
+					if (rId=='dataprovider') {
+						fmdpf_showConditionalSub(rId, nv, fmdmeta_prop.control.select.properties[rId]);
+					}
+				}
 			}
 		}
 	};

@@ -25,16 +25,26 @@ fmdmeta_prop.control.p = {
 		    	"displayOnly" : true,
 		    	"afterProperty" : "id"
 		    },
-		    "bindings" : {
+		    "databinding" : {
 		    	"name" : fmd_i18n_prop_binding,
-		    	"cellType" : "binding"
+		    	"img" : "databinding.png",
+		    	"cellType" : "databinding",
+		    	"validator" : "NotEmpty"
 		    },
-		    "maxLength" : {
+		    "processbinding" : {
+		    	"name" : fmd_i18n_prop_pbinding,
+		    	"img" : "processbinding.png",
+		    	"cellType" : "processbinding"
+		    },
+		    "maxlength" : {
 		    	"name" : fmd_i18n_prop_maxlength,
 		    	"cellType" : "ed",
-		    	"value" : {"default":"10"}
+		    	"value" : {"default":"10"},
+		    	"validator" : "ValidInteger",
+		    	"tooltip" : fmd_i18n_modules.input.tip_maxlength
 		    }
 		},
+		"abandon-properties" : ["valueValidation"],
 		"includes-events" : {
 			"common" : fmdmeta_prop.common.all.events,
 			"controlcommon" : fmdmeta_prop.common.datacontrol.events
@@ -44,7 +54,10 @@ fmdmeta_prop.control.p = {
 		},
 		"abandon-events" : ["onchange"],
 		"onApply" : function() {
-			
+			var obj = fmdf_getSelected();
+			var vals = fmd.version.formdata.propconf[obj.attr("id")];
+			obj.find('label').html(vals["i18nname-"+fmd.lang])
+				.css("display", (vals["hideLabel"]=='1')?"none":"block");
 		},
 		"gridEvents" : {
 			"onEditCell" : function(stage,rId,cId,nv,ov) {

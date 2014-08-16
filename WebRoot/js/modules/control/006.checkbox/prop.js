@@ -9,9 +9,19 @@ fmdmeta_prop.control.checkbox = {
 		//icon in element list, located in images/designer/modules/
 		"icon" : "elem_checkbox.png",
 		//html code for dragging
-		innerhtml_dragging : '<label class="title">'+fmd_i18n_untitled+'</label><div class="column column1"><input type="checkbox" name="checkbox[]" value="options 1"/ ><span>options 1</span><br/><input type="checkbox" name="checkbox[]" value="options 2"/ ><span>options 2</span><br/><input type="checkbox" name="checkbox[]" value="options 3"/ ><span>options 3</span><br/></div><span class="clearfix"></span>',
+		innerhtml_dragging : '<label class="title">'+fmd_i18n_untitled+'</label>'+
+			'<div style="*display:inline;width:10em;padding:0.7em 0.3em 0.7em 0.3em;"><input type="checkbox" value="0"/ >'+
+			'<span>'+
+			//fmd_i18n_untitled+
+			'</span>'+
+			'<br/></div>',
 		//html code after dropped
-		innerhtml_dropped : '<label class="title">'+fmd_i18n_untitled+'</label><div class="column column1"><input type="checkbox" name="checkbox[]" value="options 1"/ ><span>options 1</span><br/><input type="checkbox" name="checkbox[]" value="options 2"/ ><span>options 2</span><br/><input type="checkbox" name="checkbox[]" value="options 3"/ ><span>options 3</span><br/></div><span class="clearfix"></span>',
+		innerhtml_dropped : '<label class="title">'+fmd_i18n_untitled+'</label>'+
+			'<div style="*display:inline;width:10em;padding:0.7em 0.3em 0.7em 0.3em;"><input type="checkbox" value="0"/ >'+
+			'<span>'+
+			//fmd_i18n_untitled+
+			'</span>'+
+			'<br/></div>',
 		"includes-properties" : {
 			"common" : fmdmeta_prop.common.all.properties,
 			"controlcommon" : fmdmeta_prop.common.datacontrol.properties
@@ -25,16 +35,19 @@ fmdmeta_prop.control.checkbox = {
 		    	"displayOnly" : true,
 		    	"afterProperty" : "id"
 		    },
-		    "bindings" : {
+		    "databinding" : {
 		    	"name" : fmd_i18n_prop_binding,
-		    	"cellType" : "binding"
+		    	"img" : "databinding.png",
+		    	"cellType" : "databinding",
+		    	"validator" : "NotEmpty"
 		    },
-		    "maxLength" : {
-		    	"name" : fmd_i18n_prop_maxlength,
-		    	"cellType" : "ed",
-		    	"value" : {"default":"10"}
+		    "processbinding" : {
+		    	"name" : fmd_i18n_prop_pbinding,
+		    	"img" : "processbinding.png",
+		    	"cellType" : "processbinding"
 		    }
 		},
+		"abandon-properties" : ["valueValidation"],
 		"includes-events" : {
 			"common" : fmdmeta_prop.common.all.events,
 			"controlcommon" : fmdmeta_prop.common.datacontrol.events
@@ -43,7 +56,10 @@ fmdmeta_prop.control.checkbox = {
 			
 		},
 		"onApply" : function() {
-			
+			var obj = fmdf_getSelected();
+			var vals = fmd.version.formdata.propconf[obj.attr("id")];
+			obj.find('label').html(vals["i18nname-"+fmd.lang])
+				.css("display", (vals["hideLabel"]=='1')?"none":"block");
 		},
 		"gridEvents" : {
 			"onEditCell" : function(stage,rId,cId,nv,ov) {

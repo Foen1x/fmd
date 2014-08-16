@@ -1,0 +1,69 @@
+div.button_delete div.btn_txt {
+        background-image: url(cancel1.gif);
+        background-repeat: no-repeat;
+        background-position: 0px 2px;
+        padding: 0px 15px 0px 0px;
+}
+
+div.button_popup div.dhxform_btn td.btn_m{
+	padding:0px;
+	background:#EEEEEE;
+	border-color:#CFCFCF;
+	border-radius:5px;
+	border:0px;
+}
+div.button_popup div.dhxform_btn td.btn_m:hover{
+	background:#EEEEEE;
+}
+div.button_popup_clear div.dhxform_btn td.btn_m{
+	padding:0px;
+	background:#EEEEEE;
+	border-color:#CFCFCF;
+	border-radius:5px;
+	border:0px;
+}
+div.button_popup_clear div.dhxform_btn td.btn_m:hover{
+	background:#EEEEEE;
+}
+div.button_popup div.dhxform_btn div.btn_txt {
+    background-image: url(popup.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    padding: 0px 0px 0px 0px;
+    margin:0px;
+    height:27px;
+	width:27px;
+}
+
+div.button_popup_clear div.dhxform_btn div.btn_txt {
+    background-image: url(popup_dis.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    padding: 0px 0px 0px 0px;
+    margin:0px;
+    height:27px;
+	width:27px;
+}
+
+div.button_newcon div.btn_txt {
+        background-image: url(popup.png);
+        background-repeat: no-repeat;
+        background-position: 0px 2px;
+        padding: 0px 0px 0px 0px;
+}
+
+.btn_picok {
+        background-image: url(ok1.gif);
+        background-repeat: no-repeat;
+        background-position: 0px 2px;
+        padding: 0px 0px 0px 0px;
+        width:30px;
+}
+
+.btn_piccancel {
+        background-image: url(cancel1.gif);
+        background-repeat: no-repeat;
+        background-position: 0px 2px;
+        padding: 0px 0px 0px 0px;
+        width:30px;
+}

@@ -1,0 +1,30 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0px; padding:0px;}
+
+body{width:100%;font-family:SimSun; font-size:16px;}
+@media screen and (-webkit-min-device-pixel-ratio:0){
+	body{width:100%;font-family:SimSun; font-size:10px;}
+}
+
+@media print {.noprint { display: none;color:green } }
+
+.btndiv{ /* display:inline-block; */float:left; background:#4087c9; border-radius:5px; border:#367BBC solid 1px; padding:0px 14px;text-align:center;height:25px; line-height:25px; color:#fff; cursor:pointer;}
+.btndiv:hover{ background:#3176B1;}
+.clearFloat{ float:none;clear: both;}
+
+.printable{margin-left:20px;margin-right:20px}
+
+.printheader {width:100%;}
+.printheader .logo{ width:33.3%; float:left; margin-top:30px;}
+.printheader .title{ width:30%; float:left; font-size:20Px; font-weight:bold; margin-top:30px;}
+.printheader .title span{margin-left:30px;}
+.printheader .bar{ width:36.3%; float:left;}
+
+.printbody table{width:100%;}
+.printbody table tr{line-height:20px;}
+.printbody table,table tr th,table tr td{border:1px solid #000; border-collapse:collapse; text-align:center;font-size:12px;}
+
+.money{ text-align:right;padding-right:5px;}
+.txt_right{text-align:right;padding-right:2px;}
+.txt_left{ text-align:left; padding-left:5px;}

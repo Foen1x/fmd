@@ -385,7 +385,7 @@ function eXcell_ace_text(cell) { //excell name is defined here
 		var alt = this.grid.isEditor ? (val ? fmd_i18n_b_edit : fmd_i18n_b_add) : fmd_i18n_b_view;
 		this.setCValue("<input type='hidden' value='"+val+"'/><img src='"+this.grid.extIconPath+imgName+
 				"' style='cursor:pointer;' align='absmiddle' onclick='fmdexf_showAceEditor(\""+
-				rId+"\", "+cId+", \""+fmd_i18n_style+"\", \"text\")' " +
+				rId+"\", "+cId+", \""+fmd_i18n_style+"\", \"text\", "+this.grid.isEditor+")' " +
 				"onmouseover='changeicosize(this,true)' onmouseout='changeicosize(this,false)'/>"+alt, 
 				val);
 	};
@@ -432,7 +432,7 @@ function eXcell_ace_javascript(cell) { //excell name is defined here
 }
 eXcell_ace_javascript.prototype = new eXcell; // nest all other methods from base class
 
-//ace_script excell type
+//ace_html excell type
 function eXcell_ace_html(cell) { //excell name is defined here
 	if (cell) { //default pattern, just copy it
 		this.cell = cell;
@@ -458,36 +458,88 @@ function eXcell_ace_html(cell) { //excell name is defined here
 }
 eXcell_ace_html.prototype = new eXcell; // nest all other methods from base class
 
-//ace_css excell type
-function eXcell_binding(cell) { //excell name is defined here
-	if (cell) { //default pattern, just copy it
-		this.cell = cell;
-		this.grid = this.cell.parentNode.grid;
+//data binding excell type
+function eXcell_databinding(a) {
+	if (a)
+		this.cell = a, this.grid = this.cell.parentNode.grid;
+	this.edit = function () {
+		this.cell.atag = !this.grid.multiLine && (_isKHTML || _isMacOS || _isFF) ? "INPUT" : "TEXTAREA";
+		this.val = this.getValue();
+		this.obj = document.createElement(this.cell.atag);
+		this.obj.setAttribute("autocomplete", "off");
+		this.obj.style.height = this.cell.offsetHeight - (_isIE ? 4 : 4) + "px";
+		this.obj.className = "dhx_combo_edit";
+		this.obj.wrap = "soft";
+		this.obj.style.textAlign = this.cell.style.textAlign;
+		this.obj.onclick = function (a) {
+			(a || event).cancelBubble =
+				!0;
+		};
+		this.obj.onmousedown = function (a) {
+			(a || event).cancelBubble = !0;
+		};
+		this.obj.value = this.val;
+		this.cell.innerHTML = "";
+		this.cell.appendChild(this.obj);
+		this.obj.onselectstart = function (a) {
+			a || (a = event);
+			return a.cancelBubble = !0;
+		};
+		_isIE && this.obj.focus();
+		this.obj.focus();
 	};
-	this.setValue = function(val) {
-		this.setCValue(val);
+	this.getValue = function () {
+		return this.cell.firstChild && this.cell.atag && this.cell.firstChild.tagName == this.cell.atag ? this.cell.firstChild.value : this.cell._clearCell ? "" : this.cell.innerHTML.toString()._dhx_trim();
 	};
-	this.getValue = function() {
-		return this.cell.innerHTML; // get value
-	};
-	this.edit = function() {
-		this.val = this.getValue(); //save current value
-		this.cell.innerHTML = "<input type='text' style='width:50px;'>"; // editor's html
-		/*this.cell.firstChild.value = parseInt(this.val); //set the first part of data
-
-		this.cell.childNodes[0].onclick = function(e) {
-			(e || event).cancelBubble = true;
-		}; //block onclick event
-		this.cell.childNodes[1].onclick = function(e) {
-			(e || event).cancelBubble = true;
-		}; //block onclick event
-*/	};
-	this.detach = function() {
-		this.setValue(this.cell.childNodes[0].value); //set the new value
-		return this.val != this.getValue(); // compare the new and the old values
+	this.detach = function () {
+		this.setValue(this.obj.value);
+		return this.val != this.getValue();
 	};
 }
-eXcell_binding.prototype = new eXcell; // nest all other methods from base class
+//data binding excell type
+eXcell_databinding.prototype = new eXcell;
+
+//process binding excell type
+function eXcell_processbinding(a) {
+	if (a)
+		this.cell = a, this.grid = this.cell.parentNode.grid;
+	this.edit = function () {
+		this.cell.atag = !this.grid.multiLine && (_isKHTML || _isMacOS || _isFF) ? "INPUT" : "TEXTAREA";
+		this.val = this.getValue();
+		this.obj = document.createElement(this.cell.atag);
+		this.obj.setAttribute("autocomplete", "off");
+		this.obj.style.height = this.cell.offsetHeight - (_isIE ? 4 : 4) + "px";
+		this.obj.className = "dhx_combo_edit";
+		this.obj.wrap = "soft";
+		this.obj.style.textAlign = this.cell.style.textAlign;
+		this.obj.onclick = function (a) {
+			(a || event).cancelBubble =
+				!0;
+		};
+		this.obj.onmousedown = function (a) {
+			(a || event).cancelBubble = !0;
+		};
+		this.obj.value = this.val;
+		this.cell.innerHTML = "";
+		this.cell.appendChild(this.obj);
+		this.obj.onselectstart = function (a) {
+			a || (a = event);
+			return a.cancelBubble = !0;
+		};
+		_isIE && this.obj.focus();
+		this.obj.focus();
+	};
+	this.getValue = function () {
+		return this.cell.firstChild && this.cell.atag && this.cell.firstChild.tagName == this.cell.atag ? this.cell.firstChild.value : this.cell._clearCell ? "" : this.cell.innerHTML.toString()._dhx_trim();
+	};
+	this.detach = function () {
+		this.setValue(this.obj.value);
+		return this.val != this.getValue();
+	};
+}
+//process binding excell type
+eXcell_processbinding.prototype = new eXcell;
+
 
 
 

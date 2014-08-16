@@ -9,9 +9,9 @@ fmdmeta_prop.control.textarea = {
 		//icon in element list, located in images/designer/modules/
 		"icon" : "elem_textarea.png",
 		//html code for dragging
-		innerhtml_dragging : '<label class="title">'+fmd_i18n_untitled+'</label><textarea class="medium" name="textarea" cols="20" rows="5" ></textarea>',
+		innerhtml_dragging : '<label class="title">'+fmd_i18n_untitled+'</label><textarea name="textarea" cols="20" rows="5" ></textarea>',
 		//html code after dropped
-		innerhtml_dropped : '<label class="title">'+fmd_i18n_untitled+'</label><textarea class="medium" name="textarea" cols="20" rows="5" ></textarea>',
+		innerhtml_dropped : '<label class="title">'+fmd_i18n_untitled+'</label><textarea name="textarea" cols="20" rows="5" ></textarea>',
 		"includes-properties" : {
 			"common" : fmdmeta_prop.common.all.properties,
 			"controlcommon" : fmdmeta_prop.common.datacontrol.properties
@@ -25,14 +25,30 @@ fmdmeta_prop.control.textarea = {
 		    	"displayOnly" : true,
 		    	"afterProperty" : "id"
 		    },
-		    "bindings" : {
+		    "databinding" : {
 		    	"name" : fmd_i18n_prop_binding,
-		    	"cellType" : "binding"
+		    	"img" : "databinding.png",
+		    	"cellType" : "databinding",
+		    	"validator" : "NotEmpty"
 		    },
-		    "maxLength" : {
+		    "processbinding" : {
+		    	"name" : fmd_i18n_prop_pbinding,
+		    	"img" : "processbinding.png",
+		    	"cellType" : "processbinding"
+		    },
+		    "maxlength" : {
 		    	"name" : fmd_i18n_prop_maxlength,
 		    	"cellType" : "ed",
-		    	"value" : {"default":"10"}
+		    	"value" : {"default":"10"},
+		    	"validator" : "ValidInteger",
+		    	"tooltip" : fmd_i18n_modules.input.tip_maxlength
+		    },
+		    "rows" : {
+		    	"name" : fmd_i18n_modules.textarea.rows,
+		    	"cellType" : "ed",
+		    	"value" : {"default":"5"},
+		    	"validator" : "ValidInteger",
+		    	"tooltip" : fmd_i18n_modules.textarea.tip_rows
 		    }
 		},
 		"includes-events" : {
@@ -43,7 +59,11 @@ fmdmeta_prop.control.textarea = {
 			
 		},
 		"onApply" : function() {
-			
+			var obj = fmdf_getSelected();
+			var vals = fmd.version.formdata.propconf[obj.attr("id")];
+			obj.find('label').html(vals["i18nname-"+fmd.lang])
+				.css("display", (vals["hideLabel"]=='1')?"none":"block");
+			obj.find('textarea').attr('rows', vals["rows"]).attr("disabled", vals["disabled"]=='1');
 		},
 		"gridEvents" : {
 			"onEditCell" : function(stage,rId,cId,nv,ov) {

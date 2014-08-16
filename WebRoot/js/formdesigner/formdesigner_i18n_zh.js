@@ -44,9 +44,8 @@ fmd_i18n_t_fontsize="默认字体大小(单位：像素，建议16)";
 fmd_i18n_t_widthem="画布宽度(默认字体大小倍数)";
 fmd_i18n_t_canvassize="画布大小";
 
-fmd_i18n_l_headerref="HTML Header 引用";
-fmd_i18n_l_headerscript="HTML HEADER 脚本";
-fmd_i18n_l_bodyscript="HTML BODY 脚本";
+fmd_i18n_l_readyscript="页面自动执行脚本";
+fmd_i18n_l_bodyscript="页面嵌入脚本";
 fmd_i18n_l_script="脚本内容";
 
 fmd_i18n_l_fmcontainer_tab="页签";
@@ -119,6 +118,7 @@ fmd_i18n_msg_notdesigned="您尚未设计表单布局，无需保存！";
 fmd_i18n_msg_succ="操作已成功！";
 fmd_i18n_msg_readonly="当前为只读模式";
 fmd_i18n_msg_processonetabonly="流程表单只支持单一页签！";
+fmd_i18n_msg_readfail="对不起，读取数据失败，请联系系统管理员或稍后重试！";
 
 fmd_i18n_binding="数据绑定";
 fmd_i18n_validator="验证";

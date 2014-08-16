@@ -2066,7 +2066,7 @@ th {
 .table {
   width: 100%;
   max-width: 100%;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 .table > thead > tr > th,
 .table > tbody > tr > th,
@@ -2077,7 +2077,9 @@ th {
   padding: 8px;
   line-height: 1.42857143;
   vertical-align: top;
-  border-top: 1px solid #ddd;
+  /* border-top: 1px solid #ddd; */
+  border: 1px solid #ddd;
+  min-height:34px;
 }
 .table > thead > tr > th {
   vertical-align: bottom;
@@ -2414,7 +2416,7 @@ input[type="date"].input-lg,
 input[type="time"].input-lg,
 input[type="datetime-local"].input-lg,
 input[type="month"].input-lg {
-  line-height: 46px;
+  line-height: 34px;
 }
 .form-group {
   margin-bottom: 15px;
@@ -2508,15 +2510,15 @@ select[multiple].input-sm {
 }
 .input-lg,
 .form-horizontal .form-group-lg .form-control {
-  height: 46px;
-  padding: 10px 16px;
+  height: 34px;
+  /* padding: 10px 16px;
   font-size: 18px;
-  line-height: 1.33;
+  line-height: 1.33; */
   border-radius: 6px;
 }
 select.input-lg {
-  height: 46px;
-  line-height: 46px;
+  height: 34px;
+  line-height: 34px;
 }
 textarea.input-lg,
 select[multiple].input-lg {
@@ -2540,9 +2542,9 @@ select[multiple].input-lg {
   text-align: center;
 }
 .input-lg + .form-control-feedback {
-  width: 46px;
-  height: 46px;
-  line-height: 46px;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
 }
 .input-sm + .form-control-feedback {
   width: 30px;
@@ -3049,9 +3051,9 @@ fieldset[disabled] .btn-link:focus {
 }
 .btn-lg,
 .btn-group-lg > .btn {
-  padding: 10px 16px;
+  /* padding: 10px 16px;
   font-size: 18px;
-  line-height: 1.33;
+  line-height: 1.33; */
   border-radius: 6px;
 }
 .btn-sm,
@@ -3440,17 +3442,17 @@ tbody.collapse.in {
 .input-group-lg > .form-control,
 .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .btn {
-  height: 46px;
-  padding: 10px 16px;
+  height: 34px;
+  /* padding: 10px 16px;
   font-size: 18px;
-  line-height: 1.33;
+  line-height: 1.33; */
   border-radius: 6px;
 }
 select.input-group-lg > .form-control,
 select.input-group-lg > .input-group-addon,
 select.input-group-lg > .input-group-btn > .btn {
-  height: 46px;
-  line-height: 46px;
+  height: 34px;
+  line-height: 34px;
 }
 textarea.input-group-lg > .form-control,
 textarea.input-group-lg > .input-group-addon,
@@ -5108,7 +5110,8 @@ a.list-group-item-danger.active:focus {
 }
 .panel > .panel-body + .table,
 .panel > .panel-body + .table-responsive {
-  border-top: 1px solid #ddd;
+  /* border-top: 1px solid #ddd; */
+  border: 1px solid #ddd;
 }
 .panel > .table > tbody:first-child > tr:first-child th,
 .panel > .table > tbody:first-child > tr:first-child td {

@@ -1,0 +1,36 @@
+@charset "utf-8";
+/* CSS Document */
+html{}
+body{margin:0px; padding:0px; overflow:hidden;}
+ul,ul li{ list-style:none; padding:0px; margin:0px;}
+/*背景*/
+.bg{ position:fixed; width:100%;height:100%; z-index:-100;}
+.bg img{width:100%;height:100%;z-index:-100;}
+/*头部*/
+.header{/* float:left; */width:100%;height:70px;background:url(images/scan/logo.jpg) no-repeat left center #e9e9e9;}
+/*.header img{float:right; height:70px;}*/
+/*表单*/
+.main{width:740px; height:510px;background:url(images/scan/paper.png) no-repeat; margin-left:auto; margin-right:auto; position:relative; top:123px;}
+/* .main input{margin:78px 0px 0px 190px; width:305px; height:52px; border:none; background:url(images/scan/search_box.png) no-repeat red; font-size:20px; letter-spacing:1.5px; padding:0px 10px;}
+.main button{ width:113px; height:51px; background:url(images/scan/button_bg.png) no-repeat; border:none; position:relative;top:-8px; position:relative\9; top:18px\9;} */
+.main input{margin:78px 0px 0px 190px; width:305px; height:52px; line-height:52px; border:none; background:url(images/scan/search_box.png) no-repeat #e9e9e9; font-size:20px; letter-spacing:1.5px; padding:0px 10px; position:absolute; top:70px; left:0px;} 
+.main button{ width:113px; height:51px; background:url(images/scan/button_bg.png) no-repeat; border:none; position:relative;top:-8px; position:relative\9; top:18px\9; position:absolute; top:148px; right:100px;}
+
+/*右侧按钮组*/
+.header .ul_right{float:right; margin-top:21px; margin-right:9px;}
+.header .ul_right li{float:left;margin-right:10px;border-radius:3px;background:#EEEEEE;}
+.header .ul_right .li1{border:1px #CFCFCF solid;}
+.header .ul_right .li1 a{ display:block;width:28px;height:26px;background:url(images/scan/ps_last1_17.png) no-repeat; background-position:center center;}
+.header .ul_right .li2{background:#E9E9E9;}
+.header .ul_right .li2 span {line-height:26px; font-family:"微软雅黑"; font-size:14px;}
+.header .ul_right .li3{width:46px; height:28px; margin-right:13px;}
+.header .ul_right .li6{ border:1px #cfcfcf solid;}
+.header .ul_right .li6 a{display:block;width:28px;height:26px;background:url(images/scan/ps_last1_26.png) no-repeat; background-position:center center;}
+
+/*中英文切换按钮样式*/
+#nav{width:43px;height:26px;font-family:微软雅黑; font-size:11.5px;position:relative;top:-13px;}
+#nav h3{ display:block;cursor:pointer; width:43px;line-height:23px; height:26px; background-color:#EEEEEE; color:#666; font-weight:100; border:1px solid #cfcfcf; border-radius:3px;padding-left:3px; background:url(images/scan/arrow_14.png) no-repeat; background-position:right 4px;}
+#nav a{display:block; width:46px;line-height:24px;color:#666666; text-align:center; text-decoration:none;}
+#nav a:hover{background-color:#eee; color:#000;}
+#nav div{display:none; border:1px solid #cfcfcf; border-top:none;position:relative;top:-15px; width:46px;}
+

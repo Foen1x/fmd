@@ -5,14 +5,14 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.tss.formdesigner.dao.mysql.MyBatisRepository;
+import com.tss.formdesigner.dao.mysql.FmdMyBatisRepository;
 
 /**
  * custom Dao class for db operations
  * @author fuzheng
  *
  */
-@MyBatisRepository
+@FmdMyBatisRepository
 public interface CustomSQLDao {
 	
 	/**

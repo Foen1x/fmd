@@ -5,7 +5,7 @@ import com.tss.formdesigner.model.TsForm;
 import java.util.List;
 import java.util.Map;
 
-@MyBatisRepository
+@FmdMyBatisRepository
 public interface TsFormMapper {
 
     /**

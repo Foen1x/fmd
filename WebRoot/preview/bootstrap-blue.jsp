@@ -10,11 +10,21 @@ String lang = "zh";
 <title>Bootstrap</title>
 <link href="<%=path%>/skins/bootstrap-blue/css/custom.css"
 	rel="stylesheet">
-<link href="<%=path%>/skins/bootstrap-blue/css/bootstrap.min.css"
+<link href="<%=path%>/skins/bootstrap-blue/css/bootstrap.css"
 	rel="stylesheet">
 <script src="<%=path%>/js/jquery/jquery-1.10.2.js"></script>
 <script src="<%=path%>/js/3rdpartyother/json2html.js"></script>
-<script src="<%=path%>/skins/bootstrap-blue/js/bootstrap.min.js"></script>
+<script src="<%=path%>/skins/bootstrap-blue/js/bootstrap.js"></script>
+
+<script src="./1.js"></script>
+<script type="text/javascript">function test1() {
+    var a = 1;
+}
+
+function test0() {
+    var a = 1;
+}
+</script>
 </head>
 <body>
 
@@ -52,11 +62,7 @@ String lang = "zh";
 		</ul>
 		<div id="myTabContent" class="tab-content">
 			<div class="tab-pane fade in active" id="tabbody_1">
-
-				
-				<div id="fmcontainer_block_1" class="panel panel-info container " style="display:block;margin-top:0.7"><div class="panel-heading"><h3 class="panel-title">未命名</h3></div><div class="panel-body"><div class="table-responsive form-inline"><table class="table"><tbody><tr><td id="ui-id-1" colspan="1" rowspan="1" style="width:33%;"><label for="ui-id-10">未命名</label><div class="form-control-div"><input id="ui-id-10" type="text" class="form-control" placeholder=""></div></td><td id="ui-id-9" colspan="2" rowspan="1" style="width:66%;"></td></tr><tr><td id="ui-id-6" colspan="1" rowspan="1" style="width:33%;"></td><td id="ui-id-8" colspan="1" rowspan="1" style="width:33%;"><label for="ui-id-11">未命名</label><div class="form-control-div"><input id="ui-id-11" type="text" class="form-control" placeholder=""></div></td><td id="ui-id-7" colspan="1" rowspan="1" style="width:33%;"></td></tr><tr><td id="ui-id-2" colspan="1" rowspan="1" style="width:33%;"></td><td id="ui-id-4" colspan="1" rowspan="1" style="width:33%;"></td><td id="ui-id-3" colspan="1" rowspan="1" style="width:33%;"><label for="ui-id-12">未命名</label><div class="form-control-div"><input id="ui-id-12" type="text" class="form-control" placeholder=""></div></td></tr><tr><td id="ui-id-5" colspan="3" rowspan="1" style="width:100%;"><label for="ui-id-13">未命名</label><div class="form-control-div"><input id="ui-id-13" type="text" class="form-control" placeholder=""></div></td></tr><tr><td id="ui-id-14" colspan="2" rowspan="1" style="width:66%;"></td></tr></tbody></table></div></div></div>
-				
-
+				<div id="fmcontainer_block_1" class="panel panel-info container " style="display:block;margin-top:0.7"><div class="panel-heading"><h3 class="panel-title">未命名</h3></div><div class="panel-body"><div class="table-responsive form-inline"><table class="table"><tbody><tr><td id="ui-id-1" colspan="1" rowspan="1" style="width:33%;"><label for="ui-id-10" style="width:120px;">未命名</label><div class="form-control-div"  style="width:100%;"><input id="ui-id-10" type="text" class="form-control" placeholder=""></div></td><td id="ui-id-9" colspan="2" rowspan="1" style="width:66%;"></td></tr><tr><td id="ui-id-6" colspan="1" rowspan="1" style="width:33%;"></td><td id="ui-id-8" colspan="1" rowspan="1" style="width:33%;"><label for="ui-id-11" style="width:120px;">未命名</label><div class="form-control-div"  style="width:100%;"><input id="ui-id-11" type="text" class="form-control" placeholder=""></div></td><td id="ui-id-7" colspan="1" rowspan="1" style="width:33%;"></td></tr><tr><td id="ui-id-2" colspan="1" rowspan="1" style="width:33%;"></td><td id="ui-id-4" colspan="1" rowspan="1" style="width:33%;"></td><td id="ui-id-3" colspan="1" rowspan="1" style="width:33%;"><label for="ui-id-12" style="width:120px;">未命名</label><div class="form-control-div"  style="width:100%;"><input id="ui-id-12" type="text" class="form-control" placeholder=""></div></td></tr><tr><td id="ui-id-5" colspan="3" rowspan="1" style="width:100%;"><label for="ui-id-13" style="width:120px;">未命名</label><div class="form-control-div"  style="width:100%;"><input id="ui-id-13" type="text" class="form-control" placeholder=""></div></td></tr></tbody></table></div></div></div>
 			</div>
 			<div class="tab-pane fade" id="tabbody_2">
 				<p>系统预留页面</p>
@@ -74,6 +80,14 @@ String lang = "zh";
 $(function() {
 	$(".panel-heading").click(function(e){$(this).next().toggle();});
 });
+</script>
+<script type="text/javascript">function test2() {
+    var a = 1;
+}
+
+function test3() {
+    var a = 1;
+}
 </script>
 </body>
 </html>

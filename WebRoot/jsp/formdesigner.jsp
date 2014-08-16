@@ -10,7 +10,8 @@ String lang = "zh";
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>Form Designer</title>
+	<title><%="zh".equalsIgnoreCase(lang) ? "表单设计" : "Form Designer"%></title>
+	<link rel="shortcut icon" type="image/x-icon" href="<%=path%>/favicon.ico" />
 	
 	<link rel="stylesheet" href="<%=path%>/js/dhtmlx3/dhtmlx_classic.css">
 	<link rel="stylesheet" href="<%=path%>/js/dhtmlx3/dhtmlx_custom_classic.css">

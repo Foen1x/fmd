@@ -15,6 +15,7 @@ This file contains css that used only in design time of formdesigner
 
 .fmcontainer_block_titlebar {
 	background-color:#2FABE9;
+	font-size: 0.8em;
 	width:100%;
 	height:2em;
 	padding-top:1em;
@@ -59,7 +60,7 @@ This file contains css that used only in design time of formdesigner
 	margin:0px;
 	background-color:white;
 	border:dashed 1px black;
-	height:30px;
+	min-height:30px;
 }
 
 .fmcontainer_block_content .fmdtd .fmdtipp {
@@ -140,12 +141,14 @@ This file contains css that used only in design time of formdesigner
 }
 
 .fmdelementlist ul li a:hover {
+	width: 12.5em;
 	color: #67a5cd;
+	border:solid 2px #2FABE9;
 	padding: 0.1em 0.5em 0.1em 0.5em;
-	margin-left: 1em;
+	margin-left: 0.5em;
 	background: #fffbd4;
-	border-top-right-radius:1em;
-	border-bottom-right-radius:1em;
+	border-top-right-radius:1.2em;
+	border-bottom-right-radius:1.2em;
 }
 
 .fmddragging {

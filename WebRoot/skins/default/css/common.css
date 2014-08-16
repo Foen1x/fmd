@@ -1,0 +1,60 @@
+html{
+  height:100%;
+  width:100%;
+  margin:0;
+  overflow-y:hidden;
+}
+body{
+  height:100%;
+  width:100%;
+  margin:0;
+  font-size:12pt;
+}
+
+table.inline {
+    background-color: #fff;
+    border-spacing: 0px;
+    border-collapse: collapse;
+    font-size: 10pt
+}
+
+table.inline th {
+    padding: 3px;
+    border: 1px solid #8cacbb;
+    background-color: #dee7ec;
+}
+
+table.inline td {
+    padding: 3px;
+    border: 1px solid #8cacbb;
+}
+
+.centeralign {
+    text-align: center;
+}
+
+.rightalign {
+    text-align: right;
+}
+
+.leftalign {
+    text-align: left;
+}
+
+.bg {
+    background-color: #666; 
+    display: none;
+    width: 2000px;
+    height: 1000px;
+    left:0;
+    top:0;/*FF IE7*/
+    filter:alpha(opacity=50);/*IE*/
+    opacity:0.5;/*FF*/
+    z-index:999;
+    position:fixed!important;/*FF IE7*/
+    position:absolute;/*IE6*/
+    _top:       expression(eval(document.compatMode &&
+    document.compatMode=='CSS1Compat') ?
+    documentElement.scrollTop + (document.documentElement.clientHeight-this.offsetHeight)/2 :/*IE6*/
+    document.body.scrollTop + (document.body.clientHeight - this.clientHeight)/2);/*IE5 IE5.5*/
+}

@@ -2,7 +2,6 @@ package com.tss.formdesigner.service;
 
 import java.util.logging.Logger;
 
-import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +13,9 @@ import com.tss.formdesigner.model.TsForm;
 import com.tss.formdesigner.model.TsFormVersion;
 import com.tss.formdesigner.model.TsFormVersionKey;
 import com.tss.formdesigner.parser.Parser;
-import com.tss.formdesigner.parser.ParserFactory;
+import com.tss.formdesigner.parser.ParserManager;
 import com.tss.util.FmdSettings;
+import com.tss.util.HtmlUtil;
 
 /**
  * 
@@ -39,24 +39,76 @@ public class FormDesignerService {
 		key.setFormid(formid);
 		key.setVersionid(versionid);
 		TsFormVersion version = fvDao.selectByPrimaryKey(key);
-		Parser parser = ParserFactory.getParser(FmdSettings.getValue(FmdSettings.PARSER_IMPL));
+		Parser parser = ParserManager.getParser();
 		
 		try {
 			parser.init(realPath, skin, lang);
 			
 			if (TsForm.TYPE_PROCESS.equalsIgnoreCase(form.getFormtype())) {
 				JSONObject formdata = JSONObject.fromObject(version.getFormdata());
-				JSONArray blocks = formdata.getJSONObject("formconf").getJSONArray("tabs").getJSONObject(0).getJSONArray("items");
+				
+				//parser modules
+				JSONObject tab0 = formdata.getJSONObject("formconf").getJSONArray("tabs").getJSONObject(0);
 				JSONObject propconfs = formdata.getJSONObject("propconf");
-				StringBuilder mHtml = parser.parseModules(blocks.toString(), propconfs.toString());
-				logger.finer("generatePreview="+mHtml);
-				return "{\"success\":true}";
+				
+				JSONObject moduleRtn = parser.parseModules(tab0.toString(), propconfs.toString());
+				String formmodules = HtmlUtil.formatHtmlCode(moduleRtn.getString("html"));
+				String generatedScript = moduleRtn.optString("generatedscript");
+				String fmdv = moduleRtn.optString("fmdv");
+				logger.finer("generatePreview modules formated=\n"+formmodules);
+				
+				//parse form
+				JSONObject env = new JSONObject();
+				env.put("ctxpath", FmdSettings.getValue(FmdSettings.FORMVARS, "targetapp.contextpath"));
+				
+				JSONObject formprop = new JSONObject();
+				formprop.put("formmodules", formmodules);
+				formprop.put("generatedscript", "fmdv=JSON.parse('"+fmdv+"');\n\n"+generatedScript);
+				formprop.put("refscript", formdata.optString("refscript"));
+				addScript(formprop, "readyscript", formdata.optString("readyscript"));
+				addScript(formprop, "bodyscript", formdata.optString("bodyscript"));
+				
+				StringBuilder fHtml = parser.parseForm(TsForm.TYPE_PROCESS.toLowerCase(), env.toString(), formprop.toString());
+				logger.finer("generatePreview form=\n"+fHtml);
+				
+				//generate file
+				String previewFolder = HtmlUtil.getPreviewRelativePath(skin);
+				String formfile = "/" + previewFolder + "/generated/" + HtmlUtil.getPreviewFileName(formid, versionid, lang);
+				String relativePath = formfile;
+				
+				//get js parser config for form type
+				JSONObject fpcfg = parser.getFormJsParserConfig(TsForm.TYPE_PROCESS.toLowerCase());
+				logger.finer("generatePreview form js parser config="+fpcfg);
+				if (fpcfg!=null) {
+					String wrapperPage = fpcfg.optString("wrapper_page");
+					if (wrapperPage!=null && wrapperPage.trim().length()>0) {
+						relativePath = "/" + previewFolder
+								+ "/"
+								+ wrapperPage
+								+ "?formfile="
+								+ formfile
+								+ "&lang="+lang;//wrapper need a lang parameter
+					}
+				}
+				
+				HtmlUtil.generatedPreviewFile(realPath + formfile, fHtml.toString());
+				
+				return "{\"success\":true, \"relativePath\":\""+relativePath+"\"}";
 			}
-			
+			return "{\"success\":false, \"err\":\"Form type:"+form.getFormtype()+" is not supported!\"}";
 		} catch (Exception e) {
 			e.printStackTrace();
+			return "{\"success\":false, \"err\":\""+e.getMessage()+"\"}";
 		}
-		return "{\"success\":false}";
+	}
+	
+	private void addScript(JSONObject formprop, String name, String script) {
+		if (script!=null  && script.length()>0) {
+			//script = "<script type=\"text/javascript\">" + script + "</script>";
+		} else {
+			script = "";
+		}
+		formprop.put(name, script);
 	}
 	
 	/*private void parseItems(Parser parser, JSONObject propconf, JSONObject m) throws Exception {

@@ -8,7 +8,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
-@MyBatisRepository
+@FmdMyBatisRepository
 public interface TsFormHistoryMapper {
 
     /**

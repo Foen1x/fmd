@@ -116,7 +116,7 @@ function msg(msg) {
 
 //alert common msg
 function msgErr(msg) {
-	dhtmlx.message({"type":"error","text":msg});
+	dhtmlx.message({"type":"error","text":msg, "expire":-1});
 }
 
 //open a window by url
@@ -169,7 +169,7 @@ function loadModule(lang, modulePath, module){
 }
 
 //JavaScript Document
-function loadJsFile(filename){
+function loadJsFile(filename, async){
     /*var fileref = document.createElement('script');
     fileref.setAttribute("type","text/javascript");
     fileref.setAttribute("src",filename);
@@ -179,13 +179,10 @@ function loadJsFile(filename){
 	
 	jQuery.ajax({
 		url : filename,
-		async : false,
+		async : !!async,
 		cache : true,
 		type : "GET",
 		dataType : "script",
-		success : function (data) {
-			
-		},
 		error : (typeof(errFunc)=="function")?errFunc:function(xhr,textstate,errthr) {msgErr("Error: ["+textstate+"]: "+errthr);}
 	});
 }

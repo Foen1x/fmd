@@ -249,7 +249,7 @@ function fmg_initVersiongrid() {
 		} else if (fmg.loginName==checkoutby) {
 			fmg.vertb.enableItem('vertb_checkin');
 			fmg.vertb.disableItem('vertb_checkout');
-			fmg.vertb.enableItem('vertb_delete');
+			this.cells(rId, fmg.vergrid.getColIndexById("VERSIONID")).getValue()!='0' && fmg.vertb.enableItem('vertb_delete');
 		} else {
 			fmg.vertb.disableItem('vertb_checkin');
 			fmg.vertb.disableItem('vertb_checkout');

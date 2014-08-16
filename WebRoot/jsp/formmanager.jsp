@@ -12,8 +12,9 @@ String displayName = "超级管理员";
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>Form Manager</title>
+	<title><%="zh".equalsIgnoreCase(lang) ? "表单管理" : "Form Manager"%></title>
 	
+	<link rel="shortcut icon" type="image/x-icon" href="<%=path%>/favicon.ico" />
 	<link rel="stylesheet" href="<%=path%>/js/dhtmlx3/dhtmlx_classic.css">
 	<link rel="stylesheet" href="<%=path%>/js/dhtmlx3/dhtmlx_custom_classic.css">
 	<link rel="stylesheet" href="<%=path%>/js/jquery-ui/jquery-ui.css">

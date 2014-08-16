@@ -1,23 +1,20 @@
 package com.tss.util;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.StringWriter;
+import java.io.PrintWriter;
+import java.io.StringReader;
 import java.util.logging.Logger;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.springframework.web.util.HtmlUtils;
-
-import com.sun.org.apache.xml.internal.serialize.OutputFormat;
 
 
 public class HtmlUtil {
+	
+	private static Logger logger = Logger.getLogger(HtmlUtil.class.getName());
 
 	/*public static StringBuilder tidy(String content) throws IOException {
 		
@@ -52,13 +49,77 @@ public class HtmlUtil {
 		
 	}*/
 	
-	public static String formatHtml(String str) throws Exception {
+	/**
+	 * format html code using jsoup
+	 * @param str
+	 * @return
+	 * @throws Exception
+	 */
+	public static String formatHtmlCode(String str) throws Exception {
 		Document doc = Jsoup.parse(str);
-		return doc.html();
+		String html = doc.body().html();
+		return html.replace("&lt;%", "<%").replace("%&gt;", "%>");
+	}
+	
+	/**
+	 * format full html document using jsoup
+	 * @param str
+	 * @return
+	 * @throws Exception
+	 */
+	public static String formatHtmlDoc(String str) throws Exception {
+		Document doc = Jsoup.parse(str);
+		String html = doc.html();
+		return html.replaceAll("&lt;%", "<%").replaceAll("%&gt;", "%>");
+	}
+	
+	/**
+	 * generate form file to preview folder
+	 * @param htmlCode
+	 * @throws IOException 
+	 */
+	public static void generatedPreviewFile(String path, String htmlCode) throws IOException {
+		logger.finer("writing file:"+path);
+		BufferedReader in = new BufferedReader(new StringReader(htmlCode));
+		PrintWriter out = new PrintWriter(new FileWriter(path));
+		String s;
+		while ((s = in.readLine()) != null) {
+			out.println(s);
+		}
+		in.close();
+		out.flush();
+		out.close();
+	}
+	
+	/**
+	 * get relative path of preview
+	 * @param skin
+	 * @param formid
+	 * @param versionid
+	 * @return
+	 */
+	public static String getPreviewRelativePath(String skin) {
+		String path = FmdSettings.getValue("preview.folder") + "/"+skin;
+		File pathf = new File(path+"/generated");
+		if (!pathf.exists()) {
+			pathf.mkdirs();
+		}
+		return path;
+	}
+	
+	/**
+	 * get relative path of preview
+	 * @param skin
+	 * @param formid
+	 * @param versionid
+	 * @return
+	 */
+	public static String getPreviewFileName(String formid, String versionid, String lang) {
+		return formid+"-"+versionid+"-"+lang+".jsp";
 	}
 	
 	public static void main(String[] args) throws Exception {
-		System.out.println(formatHtml("<div id='fmcontainer_tab_1'><span><div id='fmcontainer_block_1'><span><div><span><div id='ui-id-2'><span><div id='ui-id-3'><span><span></div><span></div><span></div><span></div><span></div>"));
+		System.out.println(formatHtmlCode("<div id='<%=path%>fmcontainer_tab_1'></div>"));
 	}
 
 }

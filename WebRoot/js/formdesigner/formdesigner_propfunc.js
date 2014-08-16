@@ -305,7 +305,8 @@ function fmdpf_loadExisting($obj) {
 	if (existingConf) {
 		for (var id in existingConf) {
 			//console.log(id + "==" + existingConf[id]);
-			fmdc.grid_prop.cells(id, fmdmeta_prop.gridconf.idx.value).setValue(existingConf[id]);
+			//only set existing properties that are available at this time
+			fmdc.grid_prop.doesRowExist(id) && fmdc.grid_prop.cells(id, fmdmeta_prop.gridconf.idx.value).setValue(existingConf[id]);
 		}
 	}
 }
@@ -323,6 +324,7 @@ function fmdpf_apply() {
 		return false;
 	}
 	fmdpf_collectValues();
+	//alert("fmdpf_apply fmdc.proptemp="+JSON.stringify(fmdc.proptemp));
 	fmdmeta_prop[fmdc.proptemp["compType"]][fmdc.proptemp["type"]].onApply && fmdmeta_prop[fmdc.proptemp["compType"]][fmdc.proptemp["type"]].onApply();
 	fmdc.unsavedchange = true;
 	return true;

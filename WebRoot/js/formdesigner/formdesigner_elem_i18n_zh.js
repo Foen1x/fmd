@@ -2,7 +2,6 @@ fmd_i18n_el_input="文本输入";
 fmd_i18n_el_p="文本输出";
 fmd_i18n_el_textarea="文本输入域";
 fmd_i18n_el_popupinput="弹出选择输入";
-fmd_i18n_el_radio="单选框";
 fmd_i18n_el_checkbox="复选框";
 fmd_i18n_el_select="下拉列表";
 fmd_i18n_el_multiselect="多选下拉列表";
@@ -31,7 +30,9 @@ fmd_i18n_prop_container_fold="默认折叠";
 fmd_i18n_prop_container_noheader="无标题栏";
 fmd_i18n_prop_container_margintop="上边距(em)";
 fmd_i18n_prop_binding="数据绑定";
+fmd_i18n_prop_pbinding="流程数据绑定";
 
+fmd_i18n_prop_tabindex="tab索引";
 fmd_i18n_prop_i18ntip="提示信息";
 fmd_i18n_prop_label="标签";
 fmd_i18n_prop_hidelabel="隐藏标签";
@@ -42,6 +43,7 @@ fmd_i18n_prop_top="上";
 fmd_i18n_prop_bottom="下";
 fmd_i18n_prop_valuevalidation="数据验证";
 fmd_i18n_prop_disabled="禁用";
+fmd_i18n_prop_required="必填";
 fmd_i18n_prop_keepondisabled="禁用时保留值";
 fmd_i18n_prop_regexp="正则表达式";
 fmd_i18n_prop_maxlength="最大字符数";
@@ -57,6 +59,16 @@ fmd_i18n_prop_htmlcode="HTML内容";
 
 fmd_i18n_prop_prop="属性";
 fmd_i18n_prop_value="值";
+fmd_i18n_prop_realvalue="真实值";
+fmd_i18n_prop_displayvalue="显示值";
+
+fmd_i18n_prop_dataprovider="元数据";
+fmd_i18n_prop_dict="多语言字典";
+fmd_i18n_prop_restsrv="Rest服务";
+fmd_i18n_prop_restsrv_tip="Rest服务地址，必须支持HTTP GET方法，如果本地服务请用“/+WebRoot上下文”开头，否则请输入全路径";
+fmd_i18n_prop_restsrvusr="认证用户";
+fmd_i18n_prop_restsrvusr_tip="访问此Rest服务所需的的认证用户，如果此服务在SSO体系中，可以忽略";
+fmd_i18n_prop_restsrvpwd="认证密码";
 
 fmd_i18n_prop_displayblock="显示";
 fmd_i18n_prop_displayblockinline="显示inline";

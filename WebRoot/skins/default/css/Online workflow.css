@@ -1,0 +1,19 @@
+@charset "utf-8";
+/* CSS Document */
+body,div,ul,li,h1,h2,h3,h4,h5,h6,p{ padding:0px; margin:0px;}
+body{ font-size:62.5%; font-family:"微软雅黑", "宋体";}
+ul li{ list-style:none;}
+.workflow{ margin:0px auto; width:95%; overflow:hidden; padding-top:20px;}
+.search{ margin-bottom:20px; float:right; position:relative;}
+.search .inputsearch{background-color: #FFFFFF;border: 1px solid #CCCCCC; min-height:30px;line-height:30px;padding-left:8px;border-radius:3px; width:160px;}
+.search .inputsearch:focus{-webkit-box-shadow: 0px 0px 5px #007eff;-moz-box-shadow: 0px 0px 5px #007eff;border:#4d90fe 1px solid;}
+.search .tips{vertical-align:top;*vertical-align:baseline; border-radius:0px 3px 3px 0px; background-color: #EEEEEE; border-left: 1px solid #CCCCCC; display: inline-block;font-size: 13px;font-weight: normal;height: 24px; line-height: 18px; min-width: 16px; padding: 4px 5px; text-align: center; margin-left: -9px; z-index:100; left:100px; top:8px; position:absolute; left:152px; top:1px;*top:2px;}
+.search .tips-icon{cursor:pointer;  background-position: -25px 2px; background-image:url(images/tbl.png); background-repeat: no-repeat; display: inline-block; height: 20px; line-height: 14px;  width:14px;}
+.work_bm{ margin-top:60px;*margin-top:100px;}
+.bm h1{ font-size:1.3em; background:#75aee2;border:#ccc soild 1px; color:#fff; height:36px; line-height:36px; padding-left:20px;*width:98.5%;*margin-top:-15px;}
+.bm h1 span{ padding-left:10px;}
+.approval{overflow:hidden;border-right:#ccc solid 1px;border-bottom:#ccc solid 1px;}
+.approval li{ width:95%;}
+.approval li p{ width:29%; float:left; line-height:30px;*line-height:30px; *margin-bottom:-5px; border-left:#ccc solid 1px; padding-left:18px; padding-right:18px;font-size:1.2em;}
+.approval li .bor-no{ border-left:none;}
+
